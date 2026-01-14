@@ -1,53 +1,49 @@
-package Lab;
+package UniversityLab;
 
-abstract class Employee {
+abstract class Staff {
 
-    String name;
+    String staffName;
 
-   
-    Employee(String name) {
-        this.name = name;
+    Staff(String staffName) {
+        this.staffName = staffName;
     }
 
-    
-    abstract void calculateSalary();
+    abstract void computeSalary();
 
-    
-    void showDetails() {
-        System.out.println("Employee Name: " + name);
+    void displayInfo() {
+        System.out.println("Staff Name: " + staffName);
     }
 }
 
+class PermanentStaff extends Staff {
 
-class FullTimeEmployee extends Employee {
-    double monthlySalary;
+    double basicSalary;
 
-    FullTimeEmployee(String name, double monthlySalary) {
-        super(name);
-        this.monthlySalary = monthlySalary;
+    PermanentStaff(String staffName, double basicSalary) {
+        super(staffName);
+        this.basicSalary = basicSalary;
     }
 
     @Override
-    void showDetails() {
-        System.out.println("Full-Time Employee Details:");
-        System.out.println("Name: " + name);
-        System.out.println("Monthly Salary: $" + monthlySalary);
+    void displayInfo() {
+        System.out.println("Permanent Staff Details:");
+        System.out.println("Name: " + staffName);
+        System.out.println("Monthly Salary: $" + basicSalary);
     }
 
     @Override
-    void calculateSalary() {
-        double annualSalary = monthlySalary * 12;
-        System.out.println("Annual Salary: $" + annualSalary);
+    void computeSalary() {
+        double yearlySalary = basicSalary * 12;
+        System.out.println("Yearly Salary: $" + yearlySalary);
     }
 }
 
-
-public class AbstractEmployeeDemo {
+public class AbstractStaffTest {
     public static void main(String[] args) {
 
-        Employee emp = new FullTimeEmployee("John ", 5000.0);
+        Staff staffObj = new PermanentStaff("Alex", 4500.0);
 
-        emp.showDetails();
-        emp.calculateSalary();
+        staffObj.displayInfo();
+        staffObj.computeSalary();
     }
 }
